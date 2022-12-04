@@ -1,15 +1,41 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Main";
+	Layout = "~/Views/Shared/_FullPageLayout.cshtml";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Merancea</h1>
-    <div>
-        <img src="~/images/MERANCEATEST.png" class="img-fluid" style="width: 100%; height: auto;" alt="Responsive image">
-     </div>
-     <div>
-         <a asp-action="Page" asp-route-id="1" class="btn btn-info" style="top:-100px;position:relative; font-size:40px">Start Your Journey</a>
-     </div>
-</div>
+<link href="~/css/index.css" rel="stylesheet" />
+@*<div class="text-center top-container">*@
+    <div id="background-img">
+		<div>
+			<a asp-action="Page" asp-route-id="1" class="btn btn-info myShadow" style="font-size:40px; position: absolute; left:40%; top:34vw; z-index: 500; color:#1e463f" title="Click Here to Begin">S T A R T</a>
+		</div>
+		<div>
+			<a asp-action="AboutMe" class="myLinks" style="font-size:20px; position: absolute; left:6%; top:48vw; z-index: 500" title="About Me">Game Designer</a>
+		<a asp-action="Index" asp-controller="Pages" class="myLinks" style="font-size:10px; position: absolute; left:93%; top:1vw; z-index: 500;color:#0d6efd ">Manage Pages</a>
+			<a href="https://www.linkedin.com/in/kasahi/" class="myLinks" target="_blank" style="font-size:20px; position: absolute; left:76%; top:48vw; z-index: 500;" title="Hire Me">LinkedIn</a>
+		</div>
+        <img src="~/images/MERANCEAmain.png" class="img-fluid" style="width: 100%; height: auto;" alt="Responsive image">
+	</div>
+	<div id="infoi">
+		<div class="waviy">
+			<span style="--i:1">M</span>
+			<span style="--i:2">E</span>
+			<span style="--i:3">R</span>
+			<span style="--i:4">A</span>
+			<span style="--i:5">N</span>
+			<span style="--i:6">C</span>
+			<span style="--i:7">E</span>
+			<span style="--i:8">A</span>
+		</div>
+	</div>
+@*</div>*@
 
-
+@*<script type="text/javascript">
+    $(function () {
+		console.log("ready");
+        $("#div1").slideDown("slow", function(){
+            
+        });
+    });
+</script>
+*@

@@ -10,6 +10,9 @@ namespace Merancea.Models
 
         public int PageId { get; set; }
         public virtual Page? Page { get; set; }
+
+        public int? DestinationPageId { get; set; }
+        public virtual Page? DestinationPage { get; set; }
     }
 
 }

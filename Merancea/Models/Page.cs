@@ -13,5 +13,6 @@ namespace Merancea.Models
         public string CoverArt { get; set; } = string.Empty;
 
         public virtual ICollection<Button>? Buttons { get; set; }
+        public virtual ICollection<Button>? DestinationButtons { get; set; }
     }
 }

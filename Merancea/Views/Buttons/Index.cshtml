@@ -21,6 +21,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.Page)
             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DestinationPage)
+            </th>
             <th></th>
         </tr>
     </thead>
@@ -35,6 +38,9 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Page.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DestinationPage.Id)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.ButtonId">Edit</a> |

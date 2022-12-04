@@ -22,7 +22,7 @@ namespace Merancea.Controllers
         // GET: Buttons
         public async Task<IActionResult> Index()
         {
-            var meranceaContext = _context.Buttons.Include(b => b.Page);
+            var meranceaContext = _context.Buttons.Include(b => b.Page).Include(b => b.DestinationPage);
             return View(await meranceaContext.ToListAsync());
         }
 
@@ -36,6 +36,7 @@ namespace Merancea.Controllers
 
             var button = await _context.Buttons
                 .Include(b => b.Page)
+                .Include(b => b.DestinationPage)
                 .FirstOrDefaultAsync(m => m.ButtonId == id);
             if (button == null)
             {
@@ -57,7 +58,7 @@ namespace Merancea.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ButtonId,Text,Attribute,PageId")] Button button)
+        public async Task<IActionResult> Create([Bind("ButtonId,Text,Attribute,PageId,DestinationPageId")] Button button)
         {
             if (ModelState.IsValid)
             {
@@ -91,7 +92,7 @@ namespace Merancea.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ButtonId,Text,Attribute,PageId")] Button button)
+        public async Task<IActionResult> Edit(int id, [Bind("ButtonId,Text,Attribute,PageId,DestinationPageId")] Button button)
         {
             if (id != button.ButtonId)
             {
