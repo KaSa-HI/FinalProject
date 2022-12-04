@@ -1,24 +1,88 @@
-﻿@model Merancea.Models.Page
-
+﻿@using Newtonsoft.Json;
+@model Merancea.Models.Page
 @{
-    ViewData["Title"] = "Final Project";
+	ViewData["Title"] = "Main";
+	Layout = "~/Views/Shared/_FullPageLayout.cshtml";
 }
-<h1>@Model.Title</h1>
-<img src="~/images/@Model.CoverArt" class="rounded mx-auto d-block" style="height: 500px;" alt="Responsive image">
-<div>
-    @Model.Content
-</div>
-<div class="row">
-	<div class="col-md-4"> </div>
-	<div class="col-md-4">
-		@foreach (Button btn in Model.Buttons)
-		{
-			<a class="btn btn-outline-secondary asp-action="Edit" asp-controller="Home" asp-route-Id="@btn.DestinationPageId">@btn.Text</a>
-		}
+
+<link href="~/css/index.css" rel="stylesheet" />
+<div id="background-img">
+	<img src="~/images/@Model.CoverArt" class="img-fluid" style="width: 100%; height: auto;" alt="Responsive image">
+	<div style="position: absolute; left:2%; top:3vw; z-index: 500">
+		<div style="font-size:30px" class="background-glow">@Model.Title</div>
 	</div>
-	<div class="col-md-4"> </div>
+	<div style="position: absolute; left:0; top:14vw; z-index: 500">
+		<div class="row">
+			<div class="col-1"></div>
+			<div class="col-10 myTextBox">
+				<div id="Dialogue" style="font-size:20px; color:black"></div>
+			</div>
+			<div class="col-1"></div>
+		</div>
+		<div class="row p-5">
+			<div class="col-1"></div>
+			<div class="col-10">
+				<button id="skip-button" type="button" class="btn btn-warning m-3" onclick="skip(); return false;">Skip</button>
+
+				<div>
+					@foreach (Button btn in Model.Buttons)
+					{
+						<a class="btn btn-primary m-3" asp-action="Page" asp-controller="Home" asp-route-Id="@btn.DestinationPageId">@btn.Text</a>
+					}
+				</div>
+			</div>
+			<div class="col-1"></div>
+		</div>
+	</div>
+</div>
+<div id="infoi">
+	<div class="waviy">
+		<span style="--i:1">M</span>
+		<span style="--i:2">E</span>
+		<span style="--i:3">R</span>
+		<span style="--i:4">A</span>
+		<span style="--i:5">N</span>
+		<span style="--i:6">C</span>
+		<span style="--i:7">E</span>
+		<span style="--i:8">A</span>
+	</div>
 </div>
 
 <style>
-
+.background-glow {
+	text-shadow: 0px 0px 4px white;
+}
+.myTextBox {
+	background-color:#fff9;
+	border:1px solid gray;
+	padding:20px;
+	border-radius:15px
+}
 </style>
+
+
+<script>
+	var text = @Html.Raw(JsonConvert.SerializeObject(Model.Content));
+	console.log(text);
+	var stop = false;
+	var showText = function (target, message, index, interval) {
+		if (index < message.length) {
+			$(target).append(message[index++]);
+			if(stop == false)
+				setTimeout(function () { showText(target, message, index, interval); }, interval);
+			else
+				$("#Dialogue").text(text);
+		}
+	}
+
+	$(function () {
+		showText("#Dialogue", text, 0, 25);
+	});
+
+	function skip() {
+		stop = true;
+		$("#Dialogue").text(text);
+		$("#skip-button").hide();
+	}
+
+</script>
