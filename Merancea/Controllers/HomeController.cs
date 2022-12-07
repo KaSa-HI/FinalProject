@@ -34,7 +34,7 @@ namespace Merancea.Controllers
                 return NotFound();
             }
 
-            var page = await _context.Pages.Include(p => p.Buttons).FirstOrDefaultAsync(p => p.Id == id);
+            var page = await _context.Pages.Include(p => p.Buttons.OrderBy(b=>b.Order)).FirstOrDefaultAsync(p => p.Id == id);
             if (page == null)
             {
                 return NotFound();

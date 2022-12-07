@@ -18,11 +18,16 @@
                 <span asp-validation-for="Text" class="text-danger"></span>
             </div>
             <div class="form-group pt-2">
+                <label asp-for="Order" class="control-label"></label>
+                <input asp-for="Order" class="form-control" />
+                <span asp-validation-for="Order" class="text-danger"></span>
+            </div>
+@*            <div class="form-group pt-2">
                 <label asp-for="Attribute" class="control-label"></label>
                 <input asp-for="Attribute" class="form-control" />
                 <span asp-validation-for="Attribute" class="text-danger"></span>
             </div>
-            <div class="form-group pt-2">
+*@            <div class="form-group pt-2">
                 <label class="control-label">Table of Contents</label>
                 <select asp-for="PageId" class ="form-control" asp-items="ViewBag.PageId"></select>
             </div>

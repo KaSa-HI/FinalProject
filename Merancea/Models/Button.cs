@@ -7,6 +7,7 @@ namespace Merancea.Models
         public int ButtonId { get; set; }
         public string Text { get; set; } = string.Empty;
         public string Attribute { get; set; } = string.Empty;
+        public int Order { get; set; }
 
         public int PageId { get; set; }
         public virtual Page? Page { get; set; }

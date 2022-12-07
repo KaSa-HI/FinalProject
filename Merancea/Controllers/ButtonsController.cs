@@ -58,7 +58,7 @@ namespace Merancea.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ButtonId,Text,Attribute,PageId,DestinationPageId")] Button button)
+        public async Task<IActionResult> Create([Bind("ButtonId,Text,Attribute,PageId,Order,DestinationPageId")] Button button)
         {
             if (ModelState.IsValid)
             {
@@ -92,7 +92,7 @@ namespace Merancea.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ButtonId,Text,Attribute,PageId,DestinationPageId")] Button button)
+        public async Task<IActionResult> Edit(int id, [Bind("ButtonId,Text,Attribute,PageId,Order,DestinationPageId")] Button button)
         {
             if (id != button.ButtonId)
             {

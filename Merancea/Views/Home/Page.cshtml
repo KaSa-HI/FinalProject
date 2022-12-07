@@ -15,7 +15,7 @@
 		<div class="row">
 			<div class="col-1"></div>
 			<div class="col-10 myTextBox">
-				<div id="Dialogue" style="font-size:20px; color:black"></div>
+				<div id="Dialogue" style="font-size:20px; color:black; white-space: pre-line"></div>
 			</div>
 			<div class="col-1"></div>
 		</div>
@@ -63,6 +63,7 @@
 
 <script>
 	var text = @Html.Raw(JsonConvert.SerializeObject(Model.Content));
+	//text=text.replace("\n","<br/><br/>");
 	console.log(text);
 	var stop = false;
 	var showText = function (target, message, index, interval) {
@@ -71,7 +72,7 @@
 			if(stop == false)
 				setTimeout(function () { showText(target, message, index, interval); }, interval);
 			else
-				$("#Dialogue").text(text);
+				$("#Dialogue").html(text);
 		}
 	}
 
@@ -81,7 +82,7 @@
 
 	function skip() {
 		stop = true;
-		$("#Dialogue").text(text);
+		$("#Dialogue").html(text);
 		$("#skip-button").hide();
 	}
 

@@ -16,10 +16,17 @@
                 @Html.DisplayNameFor(model => model.Text)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Attribute)
+                @Html.DisplayNameFor(model => model.Order)
+@*                @Html.DisplayNameFor(model => model.Attribute)
+*@            </th>
+            <th>
+                Page.Id
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Page)
+            </th>
+            <th>
+                DestinationPage.Id
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.DestinationPage)
@@ -34,13 +41,20 @@
                 @Html.DisplayFor(modelItem => item.Text)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Attribute)
-            </td>
+                @Html.DisplayFor(modelItem => item.Order)
+@*                @Html.DisplayFor(modelItem => item.Attribute)
+*@            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Page.Id)
             </td>
+            <td style="color:grey">
+                @Html.DisplayFor(modelItem => item.Page.Title)
+            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.DestinationPage.Id)
+            </td>
+		    <td style="color:grey">
+                @Html.DisplayFor(modelItem => item.DestinationPage.Title)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.ButtonId">Edit</a> |
